@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Shipments.UnitTests/Shipments.UnitTests.csproj" />
+  <Project Path="Shipments/Shipments.csproj" />
+</Solution>

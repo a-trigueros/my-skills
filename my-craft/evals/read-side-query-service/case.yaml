@@ -1,0 +1,16 @@
+schema_version: "1.1"
+name: read-side-query-service
+expected_outcome: |
+  L'écran « expéditions prêtes à partir » est ajouté en suivant la séparation
+  lecture/écriture de la grille DDD : la lecture passe par un service de requêtes
+  qui projette directement vers des DTO (id, client, date d'enregistrement des
+  expéditions en statut Ready) à partir de la source, sans charger d'agrégats via
+  IShipmentRepository. Le nouveau code n'ajoute pas de méthode de lecture écran au
+  contrat du repository — il reste dédié au chargement/sauvegarde d'agrégats pour
+  le chemin d'écriture ; le contrat reste déclaré dans le domaine, l'implémentation
+  dans l'infrastructure. Le chemin d'écriture existant (Shipment,
+  DispatchShipmentHandler) n'est pas restructuré : la fonctionnalité s'ajoute,
+  ce qui est hors diff est nommé, pas corrigé. Des tests <Operation>Should
+  énoncent ce que l'écran montre (filtre statut Ready, champs exposés) ; la solution compile et les tests passent.
+context:
+  scaffold_script: executable_place-files.sh

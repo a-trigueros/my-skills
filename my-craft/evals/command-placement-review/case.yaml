@@ -1,0 +1,20 @@
+schema_version: "1.1"
+name: command-placement-review
+expected_outcome: |
+  REVIEW.md classe les problèmes par gravité et applique la grille de rôles DDD
+  (qui fait quoi). Sur PlaceOrderHandler : les règles métier (garde-fous de ligne,
+  remise grossiste, transition de statut par assignation de propriétés) sont
+  signalées comme appartenant à l'agrégat Order, derrière des méthodes
+  intentionnelles (ex. Confirm(now), une méthode de calcul de remise) ;
+  l'orchestration (charger / appeler / sauvegarder) reste dans le handler. La
+  distinction de rôles est explicitement énoncée : le service d'application
+  orchestre un cas d'usage, l'agrégat protège ses invariants. Sur
+  OrdersQueryHandler : le chemin de lecture est signalé — charger des agrégats via
+  le repository pour fabriquer des DTO est un détour par l'écriture, une lecture
+  passe par un service de requêtes qui projette directement vers les DTO à
+  afficher. AUCUNE sur-correction : pas de demande de déplacer l'orchestration
+  dans l'agrégat, pas d'injection du repository dans Order, le repository reste
+  dédié au chargement/sauvegarde d'agrégats. Les citations de REVIEW.md
+  correspondent aux sources : pas de champ ou membre halluciné.
+context:
+  scaffold_script: executable_place-files.sh

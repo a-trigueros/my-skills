@@ -1,6 +1,6 @@
 ---
 name: my-craft
-description: "Apply the user's software craftsmanship rules whenever writing, modifying, fixing, refactoring, reviewing, or generating code in any language — including small edits, tests, configs, and generated code. Encodes the ladder of automated guarantees (compiler > analyzer > architecture test > assertion > convention), deep modules, no hasty abstractions (rule of three), make illegal states unrepresentable, tests as knowledge (per-operation `<Operation>Should` classes, nested `Fail` with `When_<business reason>` failures), naming coherence, and a paradigm gate with per-situation Object Calisthenics profiles. Read references/object-oriented.md for object-oriented code (SOLID, calisthenics profiles, domain strengthening: closure of operations, double dispatch, no half-baked states, avoiding setters), references/validation-layers.md whenever a change submits, validates, or rejects data in a SPA/API (the four validation layers: frontend, exposure, domain, system), references/csharp.md for any C#/.NET code."
+description: "Apply the user's software craftsmanship rules whenever writing, modifying, fixing, refactoring, reviewing, or generating code in any language — including small edits, tests, configs, and generated code. Encodes the ladder of automated guarantees (compiler > analyzer > architecture test > assertion > convention), deep modules, no hasty abstractions (rule of three), make illegal states unrepresentable, tests as knowledge (per-operation `<Operation>Should` classes, nested `Fail` with `When_<business reason>` failures), naming coherence, and a paradigm gate with per-situation Object Calisthenics profiles. Read references/object-oriented.md for object-oriented code (SOLID, calisthenics profiles, domain strengthening: closure of operations, double dispatch, no half-baked states, avoiding setters), references/ddd.md when the codebase follows DDD layering (who does what among application service, aggregate, domain service, repository, query service), references/validation-layers.md whenever a change submits, validates, or rejects data in a SPA/API (the four validation layers: frontend, exposure, domain, system), references/csharp.md for any C#/.NET code."
 ---
 
 # Craft
@@ -238,6 +238,10 @@ profile**: one paradigm, not two gates.
   whenever a change submits, validates, or rejects data: where each check
   belongs — frontend, exposure, domain, system — and the information profile
   each layer owes its consumer.
+- **DDD layering** → read `references/ddd.md` when the codebase follows DDD:
+  who does what among application service, aggregate, domain service,
+  repository, query service, and where each kind of change lands — command
+  path, query path.
 - **C# / .NET** → read `references/csharp.md`: build hygiene, type
   comparison, resource ownership, validation layering, value objects,
   exceptions, time injection, persistence concurrency, log policy, naming,

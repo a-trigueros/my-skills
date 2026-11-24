@@ -25,6 +25,7 @@ génération de code, dans tout langage. Encode :
 
 Références : [`object-oriented.md`](my-craft/references/object-oriented.md)
 (SOLID, calisthenics, renforcement du domaine),
+[`ddd.md`](my-craft/references/ddd.md) (rôles DDD — qui fait quoi),
 [`validation-layers.md`](my-craft/references/validation-layers.md) (les quatre
 couches de validation : frontend, exposition, domaine, système),
 [`csharp.md`](my-craft/references/csharp.md),
