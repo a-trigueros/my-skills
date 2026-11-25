@@ -38,9 +38,13 @@ signature or the XML doc states who disposes.
 
 ## Extension methods
 
-Declare an extension method in the namespace of the type it extends — the
-consumer already imports that namespace, so the method is discoverable where
-the type is. Pit of success: the right usage is the natural one.
+- **One extension class per extended type** — a class extending `Shipment`
+  extends only `Shipment`, and takes its name (`ShipmentExtensions`); a
+  multi-type extensions class scatters its touchpoints and bloats every
+  consumer's IntelliSense.
+- **Declare it in the namespace of the type it extends** — the consumer
+  already imports that namespace, so the method is discoverable where the
+  type is. Pit of success: the right usage is the natural one.
 
 ## Validation layering
 
@@ -179,6 +183,14 @@ No abbreviations; names agree with types and docs — plural name → collection
 predicate name → `bool`, no antonyms between name and type or comment. In C#
 this is analyzer territory when possible: prefer an `.editorconfig` rule over
 a review remark.
+
+**Interfaces read as "I + what the object does"** (`ILaceShoes`,
+`IDrinkCoffee`) — the interface names a capability. The implementation takes
+the noun form (`ShoesLacer`, `CoffeeDrinker`): what the thing is, not
+`ShoesLacerImpl` — a suffix that says nothing the type name doesn't already
+say. The rule binds capability and service interfaces; data-access ports keep
+their ecosystem vocabulary (`IOrderRepository`, `ISignupStore` stay valid) —
+the verb form (`IStoreOrders`) conforms too when naming a new one.
 
 ## Visibility — no code-hiding mechanisms
 

@@ -1,0 +1,19 @@
+schema_version: "1.1"
+name: naming-and-extensions-review
+expected_outcome: |
+  REVIEW.md classe les problèmes par gravité et applique les règles de nommage et
+  d'extensions du reference C#. Interfaces : IInventoryChecker ne lit pas comme
+  « I + ce que l'objet fait » — la forme voulue est verbale (ICheckInventory ou
+  équivalent), l'implémentation prenant la forme nominale (InventoryChecker) ;
+  OrderPricerImpl est signalé pour son suffixe Impl — l'implémentation d'une
+  interface porte la forme nominale sans suffixe (OrderPricer). Extensions :
+  CommonHelpers est signalé deux fois — il étend plusieurs types (StockItem,
+  PurchaseOrder) alors qu'une classe d'extensions est dédiée à un seul type étendu
+  et prend son nom, et il vit dans Acme.Warehouse.Helpers au lieu du namespace des
+  types étendus (Domain), là où le consommateur découvre la méthode. AUCUN faux
+  positif : IReserveStock + StockReserver (forme verbale + nominale) et
+  BarcodeExtensions (un seul type étendu, namespace du type) respectent la
+  convention — aucune demande de les renommer, déplacer ou splitter. Les citations
+  de REVIEW.md correspondent aux sources : pas de membre halluciné.
+context:
+  scaffold_script: executable_place-files.sh
